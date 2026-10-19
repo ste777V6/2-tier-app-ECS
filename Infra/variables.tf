@@ -15,6 +15,21 @@ variable "name" {
   type        = string
 }
 
+variable "prefix" {
+  description = "Prefix for resource names"
+  type        = string
+
+}
+
+variable "alb_log_bucket_name" {
+  description = "Globally unique S3 bucket name for ALB access logs"
+  type        = string
+}
+
+
+
+
+
 #Defualt tag moved under provider configuration
 #variable "aws_tags" {
 # description = "A map of tags to apply to all resources"
@@ -136,17 +151,11 @@ variable "secret_recovery_window_in_days" {
 }
 
 
---------------------ECS variables-----------------------------
+#--------------------ECS variables-----------------------------
 
 
 variable "app_name" {
   description = "The name of the application"
-  type        = string
-
-}
-
-variable "prefix" {
-  description = "Prefix for resource names"
   type        = string
 
 }

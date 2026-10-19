@@ -23,7 +23,7 @@ resource "aws_db_instance" "this" {
   engine                 = "postgres"
   engine_version         = var.engine_version
   instance_class         = var.instance_class
-  port                   = var.port
+  port                   = var.db_port
   allocated_storage      = var.allocated_storage
   storage_encrypted      = true
   db_name                = var.db_name
