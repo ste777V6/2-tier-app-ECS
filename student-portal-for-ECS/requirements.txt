@@ -1,0 +1,10 @@
+flask==3.1.3
+gunicorn==26.2.0
+Flask-SQLAlchemy==3.1.1
+python-dotenv==1.2.3
+psycopg[binary]==3.2.10
+#Adding vulnerable packages to test Snyk scan
+#urllib3==1.24.1   # several high-severity CVEs
+#PyJWT==1.5.0      # high: algorithm confusion / key handling
+#Adding pytest for testing
+pytest==7.4.2

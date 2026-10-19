@@ -1,0 +1,13 @@
+vulnerabilities:
+  - id: GHSA-6v7p-g79w-8964
+    statement: "msgpack vendored inside pip; not used by the application at runtime."
+    expired_at: 2026-12-31
+  - id: CVE-2025-47273
+    statement: "setuptools/pkg_resources vendored inside pip; not used by the application at runtime."
+    expired_at: 2026-12-31
+  - id: CVE-2026-97687
+    statement: "urllib3 vendored inside pip; app does not install or import urllib3. Not used at runtime."
+    expired_at: 2026-12-31
+  - id: CVE-2026-97689
+    statement: "urllib3 vendored inside pip; app does not install or import urllib3. Not used at runtime."
+    expired_at: 2026-12-31
