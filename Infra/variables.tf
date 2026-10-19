@@ -26,9 +26,18 @@ variable "alb_log_bucket_name" {
   type        = string
 }
 
+variable "domain_name" {
+  description = "The domain name for the application"
+  type        = string
+  default     = "stev6devops.2bd.net"
+}
 
 
+variable "app_name" {
+  description = "The name of the application"
+  type        = string
 
+}
 
 #Defualt tag moved under provider configuration
 #variable "aws_tags" {
@@ -153,22 +162,31 @@ variable "secret_recovery_window_in_days" {
 
 #--------------------ECS variables-----------------------------
 
-
-variable "app_name" {
-  description = "The name of the application"
-  type        = string
-
-}
-
 variable "ecr_image" {
   description = "The ECR image to use for the ECS task"
   type        = string
-  default     = "344707019777.dkr.ecr.us-east-1.amazonaws.com/bootcamp2026-student-portal-ecr:latest"
+  default     = "344707019777.dkr.ecr.us-east-1.amazonaws.com/ecs-3-tier-app:latest"
 }
 
-variable "domain_name" {
-  description = "The domain name for the application"
-  type        = string
-  default     = "stev6devops.2bd.net"
-}
+  variable "desired_count" {
+    description = "The number of ECS tasks to run"
+    type        = number
+    default     = 1
+  }
+
+  variable "autoscaling_min" {
+    description = "The minimum number of ECS tasks for autoscaling"
+    type        = number
+    default     = 1
+  }
+
+  variable "autoscaling_max" {
+    description = "The maximum number of ECS tasks for autoscaling"
+    type        = number
+    default     = 2
+  }
+
+
+
+
 

@@ -120,7 +120,7 @@ resource "aws_lb" "this" {
   }
 
   # AWS checks it can write to the bucket when logging is enabled,
-  # so the bucket policy must exist first.
+  # so the bucket policy must exist first. Wait also for the ACM certificate to be issued so the HTTPS listener can be created.
   depends_on = [aws_s3_bucket_policy.logs]
 }
 
@@ -135,6 +135,8 @@ resource "aws_lb_listener" "https" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.this["blue"].arn
   }
+  
+  depends_on = [aws_acm_certificate_validation.this]
 }
 
 resource "aws_lb_listener" "http" {
@@ -151,4 +153,5 @@ resource "aws_lb_listener" "http" {
       status_code = "HTTP_301"
     }
   }
+  depends_on = [aws_acm_certificate_validation.this]
 }
