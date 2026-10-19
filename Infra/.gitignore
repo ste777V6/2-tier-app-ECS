@@ -1,0 +1,10 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Variables / outputs you don't want committed
+*.tfvars
+crash.log
+*.tfplan
