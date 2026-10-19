@@ -3,10 +3,12 @@ variable "name" {
   type        = string
 }
 
-variable "subnet_ids" {
+
+variable "private_subnet_cidrs" {
   description = "Private subnets for the DB subnet group (at least two AZs)"
   type        = list(string)
 }
+
 
 variable "security_group_ids" {
   description = "Security groups attached to the DB instance"
@@ -31,7 +33,7 @@ variable "allocated_storage" {
   default     = 20
 }
 
-variable "port" {
+variable "db_port" {
   description = "Database port"
   type        = number
   default     = 5432

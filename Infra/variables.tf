@@ -85,20 +85,7 @@ variable "db_port" {
 
 #---------------------Database variables-----------------------------
 
-variable "name" {
-  description = "Name prefix for the DB instance, subnet group and secret"
-  type        = string
-}
 
-variable "subnet_ids" {
-  description = "Private subnets for the DB subnet group (at least two AZs)"
-  type        = list(string)
-}
-
-variable "security_group_ids" {
-  description = "Security groups attached to the DB instance"
-  type        = list(string)
-}
 
 variable "engine_version" {
   description = "PostgreSQL engine version"
@@ -116,12 +103,6 @@ variable "allocated_storage" {
   description = "Storage in GiB"
   type        = number
   default     = 20
-}
-
-variable "port" {
-  description = "Database port"
-  type        = number
-  default     = 5432
 }
 
 variable "db_name" {
