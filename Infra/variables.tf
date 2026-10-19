@@ -6,7 +6,7 @@ variable "aws_region" {
 }
 
 variable "environment" {
-  type    = string
+  type = string
 }
 
 
@@ -168,23 +168,23 @@ variable "ecr_image" {
   default     = "344707019777.dkr.ecr.us-east-1.amazonaws.com/ecs-3-tier-app:latest"
 }
 
-  variable "desired_count" {
-    description = "The number of ECS tasks to run"
-    type        = number
-    default     = 1
-  }
+variable "desired_count" {
+  description = "The number of ECS tasks to run"
+  type        = number
+  default     = 1
+}
 
-  variable "autoscaling_min" {
-    description = "The minimum number of ECS tasks for autoscaling"
-    type        = number
-    default     = 1
-  }
+variable "autoscaling_min" {
+  description = "The minimum number of ECS tasks for autoscaling"
+  type        = number
+  default     = 1
+}
 
-  variable "autoscaling_max" {
-    description = "The maximum number of ECS tasks for autoscaling"
-    type        = number
-    default     = 2
-  }
+variable "autoscaling_max" {
+  description = "The maximum number of ECS tasks for autoscaling"
+  type        = number
+  default     = 2
+}
 
 
 
