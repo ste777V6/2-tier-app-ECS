@@ -18,4 +18,6 @@ module "ecs" {
   desired_count   = var.desired_count
   autoscaling_min = var.autoscaling_min
   autoscaling_max = var.autoscaling_max
+
+
 }

@@ -3,7 +3,7 @@ module "database" {
 
   name                           = var.name
   private_subnet_cidrs           = var.private_subnet_cidrs
-  security_group_ids             = module.security.rds_sg_id
+  security_group_ids             = [module.security.rds_sg_id]
   engine_version                 = var.engine_version
   instance_class                 = var.instance_class
   allocated_storage              = var.allocated_storage
