@@ -67,6 +67,12 @@ variable "private_subnet_cidrs" {
   type        = list(string)
 }
 
+variable "database_subnet_cidrs" {
+  type    = list(string)
+  default = []
+}
+
+
 variable "availability_zones" {
   description = "The availability zones to use for the subnets"
   type        = list(string)

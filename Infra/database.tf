@@ -2,7 +2,7 @@ module "database" {
   source = "./modules/database"
 
   name                           = var.name
-  private_subnet_cidrs           = var.private_subnet_cidrs
+  subnet_ids                     = module.networking.database_subnet_ids
   security_group_ids             = [module.security.rds_sg_id]
   engine_version                 = var.engine_version
   instance_class                 = var.instance_class

@@ -4,11 +4,10 @@ variable "name" {
 }
 
 
-variable "private_subnet_cidrs" {
-  description = "Private subnets for the DB subnet group (at least two AZs)"
+variable "subnet_ids" {
+  description = "Subnet IDs for the DB subnet group (at least two AZs)"
   type        = list(string)
 }
-
 
 variable "security_group_ids" {
   description = "Security groups attached to the DB instance"

@@ -1,6 +1,10 @@
 output "secret_arn" {
   description = "ARN of the Secrets Manager secret containing the DB_LINK connection string"
   value       = aws_secretsmanager_secret.db_link.arn
+
+  depends_on = [
+    aws_secretsmanager_secret_version.db_link
+  ]
 }
 
 output "address" {

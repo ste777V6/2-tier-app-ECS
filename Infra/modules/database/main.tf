@@ -8,7 +8,7 @@ locals {
 
 resource "aws_db_subnet_group" "this" {
   name       = "${var.name}-rds-subnet-group"
-  subnet_ids = var.private_subnet_cidrs
+  subnet_ids = var.subnet_ids
 }
 
 # Generated and owned by Terraform (not AWS-managed) so it can be embedded

@@ -2,7 +2,7 @@ locals {
   # Build a map of AZ => CIDR, so each subnet is keyed by its AZ (e.g. "eu-central-1a")
   public_subnets  = zipmap(var.availability_zones, var.public_subnet_cidrs)
   private_subnets = zipmap(var.availability_zones, var.private_subnet_cidrs)
-
+  database_subnets = length(var.database_subnet_cidrs) > 0 ? zipmap(var.availability_zones, var.database_subnet_cidrs) : {}
   # AZs that get a NAT gateway: ---difficult : HARD
   #   NAT disabled -> []
   #   single NAT   -> ["eu-central-1a"]            (first AZ only)
@@ -61,6 +61,18 @@ resource "aws_subnet" "private" {
 
   tags = {
     Name = "${var.name}-private-${each.key}"
+  }
+}
+
+resource "aws_subnet" "database" {
+  for_each = local.database_subnets
+
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = each.value
+  availability_zone = each.key
+
+  tags = {
+    Name = "${var.name}-database-${each.key}"
   }
 }
 
@@ -151,4 +163,25 @@ resource "aws_route_table_association" "private" {
 
   subnet_id      = each.value.id
   route_table_id = aws_route_table.private[each.key].id
+}
+
+#---------------------------------------------------------------------
+# Database routing - isolated subnets with no internet access, so no routes are created
+#--------------------------------------------------------------------
+# Isolated: only the implicit local VPC route, no 0.0.0.0/0
+
+resource "aws_route_table" "database" {
+  count  = length(local.database_subnets) > 0 ? 1 : 0
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.name}-database-rt"
+  }
+}
+
+resource "aws_route_table_association" "database" {
+  for_each = aws_subnet.database
+
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.database[0].id
 }

@@ -33,6 +33,12 @@ variable "private_subnet_cidrs" {
   type        = list(string)
 }
 
+variable "database_subnet_cidrs" {
+  description = "CIDR blocks for isolated database subnets, one per AZ (empty = none)"
+  type        = list(string)
+}
+
+
 variable "enable_nat_gateway" {
   description = "Create a single NAT gateway so private subnets can reach the internet"
   type        = bool
