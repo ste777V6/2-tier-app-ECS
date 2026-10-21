@@ -1,6 +1,6 @@
 # Infrastructure (Terraform)
 
-AWS infrastructure for the 3-tier student-portal app (ALB → ECS Fargate → RDS PostgreSQL), organised as **local Terraform modules**.
+AWS infrastructure for the 2-tier student-portal app (ALB → ECS Fargate → RDS PostgreSQL), organised as **local Terraform modules**.
 
 The root directory wires the modules together. Each area has its own root file (`networking.tf`, `alb.tf`, …) that calls one module.
 
